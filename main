@@ -3,8 +3,8 @@
 require 'csv'
 require_relative 'lib/cable_parser'
 
-# cat заявка.csv | main
+# cat заявка.csv | ./main
 
 CSV.parse($stdin.read) do |row|
-  p CableParser.new(row.join).response
+  pp CableParser.new(row.join).response
 end

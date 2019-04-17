@@ -7,13 +7,8 @@ class CableParser
     @response_data = {}
   end
 
-  def test
-    response
-    @string
-  end
-
   def response
-    %i[color size standart unit execution name voltage ].each do |method|
+    %i[color size standart unit execution name voltage].each do |method|
       @response_data[method] = send(method)
       @string.sub!(@response_data[method], '') unless @response_data[method].nil?
     end
@@ -27,7 +22,7 @@ class CableParser
   end
 
   def name
-    @string[/[\W]{1,}\d{1,}/]&.strip
+    @string[/[\W]{1,}\d{1,}/]&.split(';')&.first&.strip
   end
 
   def color
